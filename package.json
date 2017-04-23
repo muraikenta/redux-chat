@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack -w",
+    "lint": "eslint ./app/assets/javascripts/src",
+    "lint:fix": "npm run lint -- --fix"
+  },
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
