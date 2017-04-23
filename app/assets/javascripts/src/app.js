@@ -1,13 +1,17 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
+import logger from 'redux-logger'
 import chatApp from './reducers'
 import Header from './components/header'
 import Messages from './components/messages'
-import UserList from './components/user_list'
+import UserList from './containers/user_list_container'
 
-const store = createStore(chatApp)
+const store = createStore(
+  chatApp,
+  applyMiddleware(logger)
+)
 
 render(
   <Provider store={store}>
