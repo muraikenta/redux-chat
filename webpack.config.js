@@ -1,3 +1,11 @@
+const webpack = require('webpack')
+const _ = require('lodash')
+
+const validEnvs = ['development', 'test', 'production']
+if (!_.isEmpty(process.env.NODE_ENV) && !_.includes(validEnvs, process.env.NODE_ENV)) {
+  throw Error('process.env.NODE_ENV is invalid')
+}
+
 module.exports={
   entry: ["./app/assets/javascripts/src/app.js"],
   output: {
@@ -16,5 +24,10 @@ module.exports={
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    })
+  ],
   devtool: 'inline-source-map'
 }
