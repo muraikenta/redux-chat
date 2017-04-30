@@ -1,6 +1,12 @@
 class Api::MessagesController < Api::BaseController
   def index
-    messages = current_user.messages_from_me.where(to_user_id: params[:user_id])
+    messages =
+      current_user.messages_from_me.where(to_user_id: params[:user_id])
+      .or(
+        current_user.messages_to_me.where(from_user_id: params[:user_id])
+      )
+      .order(created_at: :asc)
+
     render json: { messages: messages }
   end
 
