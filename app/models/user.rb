@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :messages_to_me, class_name: :Message, foreign_key: :to_user_id
 
   validates :name, presence: true
+
+  before_create -> {
+    self.image_path = '/default_user.jpg' unless self.image_path.present?
+  }
 end
