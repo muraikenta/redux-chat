@@ -1,5 +1,7 @@
 import {connect} from 'react-redux'
-import {updateOpenedUserId} from '../actions/user_list'
+import api from '../lib/api'
+import {openUser} from '../actions/user_list'
+import {setMessages} from '../actions/message'
 import UserList from '../components/user_list'
 
 const mapStateToProps = (state) => {
@@ -9,7 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onClickItem: (userId) => {
-      dispatch(updateOpenedUserId(userId))
+      dispatch(openUser(userId))
     },
   }
 }

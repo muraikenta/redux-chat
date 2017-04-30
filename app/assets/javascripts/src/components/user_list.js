@@ -24,11 +24,11 @@ class UserList extends React.PureComponent {
           onClick={ onClickItem.bind(null, user.id) }
         >
           <div className='user-list__item__picture'>
-            <img src={ user.profilePicture } />
+            <img src={ user.imagePath } />
           </div>
           <div className='user-list__item__details'>
             <h4 className='user-list__item__name'>
-              { user.email }
+              { user.name }
             </h4>
           </div>
         </li>

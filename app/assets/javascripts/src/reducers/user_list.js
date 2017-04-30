@@ -11,8 +11,8 @@ const userList = (state = initialState, action) => {
       return {
         ...state,
         users: action.users,
-        openedUserId: state.openedUserId || action.users[0].id,
       }
+
     case ActionTypes.USER__UPDATE_OPENED_ID:
       return {
         ...state,
