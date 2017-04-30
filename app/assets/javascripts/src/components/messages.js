@@ -3,7 +3,7 @@ import classNames from 'classNames'
 
 class Messages extends React.PureComponent {
   render() {
-    const {messages, currentUserId} = this.props
+    const {messages, meId} = this.props
 
     if (!messages) {
       return <div/>
@@ -12,7 +12,7 @@ class Messages extends React.PureComponent {
     const messagesElement = messages.map((message) => {
       const messageClasses = classNames({
         'message-box__item': true,
-        'message-box__item--from-current': message.fromUserId === currentUserId,
+        'message-box__item--from-current': message.fromUserId === meId,
         'clear': true,
       })
 

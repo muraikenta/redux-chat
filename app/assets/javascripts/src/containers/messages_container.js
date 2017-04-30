@@ -5,20 +5,29 @@ import Messages from '../components/messages'
 import ReplyBox from '../components/reply_box'
 
 const mapStateToProps = (state) => {
-  const {messages, userList} = state
+  const {messages, userList, session} = state
+  const {me = {}} = session
   const {openedUserId} = userList
+
   return {
     messages: messages[openedUserId],
+    meId: me.id,
     openedUserId,
   }
 }
 
 class MessageBox extends React.PureComponent {
   render() {
-    const {messages, openedUserId, dispatch} = this.props
+    const {
+      messages,
+      meId,
+      openedUserId,
+      dispatch,
+    } = this.props
+    
     return (
       <div className='message-box'>
-        <Messages messages={this.props.messages} />
+        <Messages messages={messages} meId={meId}/>
         <ReplyBox onSubmit={(body) => {dispatch(createMessage(openedUserId, body))}} />,
       </div>
     )
