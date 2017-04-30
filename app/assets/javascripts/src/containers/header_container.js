@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   const {me = {}} = state.session
   return {
     userName: me.name,
+    userImage: me.imagePath,
   }
 }
 
